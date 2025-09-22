@@ -18,6 +18,8 @@
   },
   "homepage": "https://github.com/Grace256c/node-js#readme",
   "dependencies": {
-    "express": "^5.1.0"
+    "env": "^0.0.2",
+    "express": "^5.1.0",
+    "mongoose": "^8.18.1"
   }
 }

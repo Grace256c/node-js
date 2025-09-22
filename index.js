@@ -1,5 +1,5 @@
 const express= require('express');
-
+const connectDB = require("./db")
 const app = express();
 
 const PORT = 5000;
@@ -69,3 +69,5 @@ app.post('/products', (req, res) =>{
 app.listen(PORT, () =>{
     console.log("Server is running on port" +PORT);
 })
+
+connectDB();
