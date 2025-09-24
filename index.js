@@ -1,8 +1,10 @@
 const express= require('express');
 const connectDB = require("./db")
+require("dotenv").config();
+const Product = require("models/Product");
 const app = express();
 
-const PORT = 5000;
+const PORT = "mongodb+srv://nakiyembagrace256_db_user:kEGiyvREYSUMvUGv@cluster0.oigvsob.mongodb.net/";
 
 app.get('/',(reqest,response)=>{
     response.send('Hello World');
@@ -65,9 +67,20 @@ app.post('/products', (req, res) =>{
     })
 })
 
+app.post('/save-product', async (req, res)=> {
+    try {
+       const product = new Product(req.body); 
+       await product.save();
+       res.json(product);
+    } catch (error) {
+        res.status(500).json({error: error.message})
+        
+    }
+})
 
-app.listen(PORT, () =>{
-    console.log("Server is running on port" +PORT);
+
+app.listen(process.env.PORT, () =>{
+    console.log("Server is running on port" +PORT + process.env.PORT);
 })
 
 connectDB();
